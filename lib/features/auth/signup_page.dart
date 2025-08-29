@@ -47,7 +47,7 @@ class _SignUpPageState extends State<SignUpPage> {
           const SnackBar(content: Text('Email zaten kullanılıyor')),
         );
       } else {
-        Navigator.pushReplacementNamed(context, '/login');
+        Navigator.pushReplacementNamed(context, '/roleSelection');
       }
     });
   }

@@ -9,25 +9,145 @@ class ApproverHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool isDark = Theme.of(context).brightness == Brightness.dark;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Onaycı Paneli"),
-        backgroundColor: AppColors.primary,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () => Navigator.pushReplacementNamed(context, '/login'),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        body: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors:
+                  isDark
+                      ? [AppColors.grey800, AppColors.primary.withOpacity(0.8)]
+                      : [
+                        AppColors.primary.withOpacity(0.8),
+                        AppColors.accent.withOpacity(0.8),
+                      ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
           ),
-        ],
-      ),
-      body: Center(
-        child: Text(
-          "Hoşgeldiniz, Onaycı!",
-          style: AppStyles.heading2.copyWith(
-            color: isDark ? AppColors.textLight : AppColors.textDark,
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    "Onaycı Paneli",
+                    style: AppStyles.heading1.copyWith(
+                      color: AppColors.textLight,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 30),
+                  Expanded(
+                    child: GridView.count(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 20,
+                      mainAxisSpacing: 20,
+                      children: [
+                        _buildFeatureCard(
+                          context,
+                          title: "Onay Bekleyen Talepler",
+                          icon: Icons.pending_actions,
+                          onTap: () {},
+                        ),
+                        _buildFeatureCard(
+                          context,
+                          title: "Geçmiş Onaylar",
+                          icon: Icons.history,
+                          onTap: () {},
+                        ),
+                        _buildFeatureCard(
+                          context,
+                          title: "Raporlar",
+                          icon: Icons.bar_chart,
+                          onTap: () {},
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildFeatureCard(
+    BuildContext context, {
+    required String title,
+    required IconData icon,
+    required VoidCallback onTap,
+  }) {
+    return InkWell(
+      onTap: () => _showConfirmDialog(context, title, onTap),
+      borderRadius: BorderRadius.circular(15),
+      child: Ink(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [AppColors.primary, AppColors.accent],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 5,
+              offset: Offset(2, 2),
+            ),
+          ],
+        ),
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(icon, size: 50, color: AppColors.textLight),
+              const SizedBox(height: 10),
+              Text(
+                title,
+                style: AppStyles.heading3.copyWith(color: AppColors.textLight),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _showConfirmDialog(
+    BuildContext context,
+    String title,
+    VoidCallback onConfirm,
+  ) {
+    showDialog(
+      context: context,
+      builder:
+          (_) => AlertDialog(
+            title: const Text("Emin misiniz?"),
+            content: Text(
+              "$title sayfasına gitmek istediğinizden emin misiniz?",
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text("Hayır"),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  onConfirm();
+                },
+                child: const Text("Evet"),
+              ),
+            ],
+          ),
     );
   }
 }
