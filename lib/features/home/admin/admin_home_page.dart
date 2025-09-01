@@ -35,7 +35,7 @@ class AdminHomePage extends StatelessWidget {
                 children: [
                   Center(
                     child: Text(
-                      "Admin Dashboard",
+                      "Admin Ana Sayfa",
                       style: AppStyles.heading1.copyWith(
                         color: AppColors.textLight,
                       ),
