@@ -1,106 +1,85 @@
 import 'package:flutter/material.dart';
 import 'package:hesapkitap/core/theme/app_colors.dart';
 import 'package:hesapkitap/core/theme/app_styles.dart';
-import 'package:hesapkitap/features/navigation/navbar.dart';
+import 'package:hesapkitap/features/home/admin/admin_home_page.dart';
+import 'package:hesapkitap/features/home/approver/approver_home_page.dart';
+import 'package:hesapkitap/features/home/customer/customer_home_page.dart';
+import 'package:hesapkitap/features/home/user/user_home_page.dart';
 
 class RoleSelectionPage extends StatelessWidget {
-  final String name;
-  final String email;
+  const RoleSelectionPage({
+    super.key,
+    required String name,
+    required String email,
+  });
 
-  const RoleSelectionPage({super.key, required this.name, required this.email});
+  Future<bool> _onWillPop() async => false; // Telefon geri tuşunu engelle
 
-  void _confirmRole(BuildContext context, String role) {
+  void _navigateToRolePage(BuildContext context, String role) {
     showDialog(
       context: context,
-      builder:
-          (_) => AlertDialog(
-            title: Text(
-              "Onay",
-              style: AppStyles.heading1.copyWith(color: AppColors.grey800),
+      builder: (_) {
+        final bool isDark = Theme.of(context).brightness == Brightness.dark;
+        return AlertDialog(
+          backgroundColor:
+              isDark ? AppColors.grey800 : AppColors.grey100, // Arka plan
+          title: Text(
+            "Seçiminizi onaylıyor musunuz?",
+            style: AppStyles.heading3.copyWith(
+              color: isDark ? AppColors.grey100 : AppColors.grey800,
             ),
-            content: Text(
-              "Seçtiğiniz rol '$role'. Devam etmek istiyor musunuz?",
-              style: AppStyles.heading3.copyWith(
-                color: AppColors.grey800,
-                fontSize: 18,
-              ),
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text(
-                  "Hayır",
-                  style: AppStyles.buttonText.copyWith(color: AppColors.error),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text(
+                "Hayır",
+                style: AppStyles.buttonText.copyWith(
+                  color:
+                      isDark
+                          ? AppColors.warning.withOpacity(0.9)
+                          : AppColors.warning,
                 ),
               ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder:
-                          (_) => BottomNavWrapper(
-                            role: role,
-                            name: name,
-                            email: email,
-                          ),
-                    ),
-                  );
-                },
-                child: Text(
-                  "Evet",
-                  style: AppStyles.buttonText.copyWith(
-                    color: AppColors.success,
-                  ),
-                ),
-              ),
-            ],
-          ),
-    );
-  }
-
-  Widget _roleCard(
-    BuildContext context,
-    String role,
-    IconData icon,
-    bool isDark,
-  ) {
-    return GestureDetector(
-      onTap: () => _confirmRole(context, role),
-      child: Container(
-        width: 200,
-        padding: const EdgeInsets.symmetric(vertical: 20),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [AppColors.primary, AppColors.accent],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-          borderRadius: BorderRadius.circular(25),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.2),
-              offset: const Offset(0, 5),
-              blurRadius: 10,
             ),
-          ],
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, size: 40, color: AppColors.textLight),
-            const SizedBox(height: 10),
-            Text(
-              role,
-              style: AppStyles.buttonText.copyWith(
-                color: AppColors.textLight,
-                fontSize: 18,
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                Widget page;
+                switch (role) {
+                  case 'admin':
+                    page = const AdminHomePage();
+                    break;
+                  case 'approver':
+                    page = const ApproverHomePage();
+                    break;
+                  case 'user':
+                    page = const UserHomePage();
+                    break;
+                  case 'customer':
+                    page = const CustomerHomePage();
+                    break;
+                  default:
+                    page = const UserHomePage();
+                }
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (_) => page),
+                );
+              },
+              child: Text(
+                "Evet",
+                style: AppStyles.buttonText.copyWith(
+                  color:
+                      isDark
+                          ? AppColors.success.withOpacity(0.9)
+                          : AppColors.success,
+                ),
               ),
             ),
           ],
-        ),
-      ),
+        );
+      },
     );
   }
 
@@ -109,11 +88,9 @@ class RoleSelectionPage extends StatelessWidget {
     final bool isDark = Theme.of(context).brightness == Brightness.dark;
 
     return WillPopScope(
-      onWillPop: () async => false,
+      onWillPop: _onWillPop,
       child: Scaffold(
         body: Container(
-          width: double.infinity,
-          height: double.infinity,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors:
@@ -127,22 +104,77 @@ class RoleSelectionPage extends StatelessWidget {
               end: Alignment.bottomRight,
             ),
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "Rol Seçimi",
-                style: AppStyles.heading1.copyWith(color: AppColors.textLight),
-                textAlign: TextAlign.center,
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    "Rolünüzü Seçin",
+                    style: AppStyles.heading1.copyWith(
+                      color: AppColors.textLight,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 50),
+                  // Rol Butonları
+                  _roleButton(
+                    context,
+                    'Admin',
+                    Icons.admin_panel_settings,
+                    'admin',
+                  ),
+                  const SizedBox(height: 20),
+                  _roleButton(
+                    context,
+                    'Yönetici',
+                    Icons.verified_user,
+                    'approver',
+                  ),
+                  const SizedBox(height: 20),
+                  _roleButton(context, 'Kullanıcı', Icons.person, 'user'),
+                  const SizedBox(height: 20),
+                  _roleButton(
+                    context,
+                    'Müşteri',
+                    Icons.shopping_cart,
+                    'customer',
+                  ),
+                ],
               ),
-              const SizedBox(height: 40),
-              _roleCard(context, "Admin", Icons.admin_panel_settings, isDark),
-              const SizedBox(height: 20),
-              _roleCard(context, "Onaycı", Icons.check_circle_outline, isDark),
-              const SizedBox(height: 20),
-              _roleCard(context, "Kullanıcı", Icons.person_outline, isDark),
-            ],
+            ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _roleButton(
+    BuildContext context,
+    String title,
+    IconData icon,
+    String role,
+  ) {
+    return SizedBox(
+      width: double.infinity,
+      height: 60,
+      child: ElevatedButton.icon(
+        onPressed: () => _navigateToRolePage(context, role),
+        icon: Icon(icon, size: 30, color: AppColors.accent),
+        label: Text(
+          title,
+          style: AppStyles.buttonText.copyWith(
+            fontSize: 20,
+            color: AppColors.grey800,
+          ),
+        ),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.grey200,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          elevation: 5,
         ),
       ),
     );

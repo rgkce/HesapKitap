@@ -4,9 +4,13 @@ import 'package:hesapkitap/features/auth/forgot_password_page.dart';
 import 'package:hesapkitap/features/auth/login_page.dart';
 import 'package:hesapkitap/features/auth/role_selection_page.dart';
 import 'package:hesapkitap/features/auth/signup_page.dart';
-import 'package:hesapkitap/features/home/admin_home_page.dart';
-import 'package:hesapkitap/features/home/approver_home_page.dart';
-import 'package:hesapkitap/features/home/user_home_page.dart';
+import 'package:hesapkitap/features/home/admin/admin_home_page.dart';
+import 'package:hesapkitap/features/home/admin/admin_reports_page.dart';
+import 'package:hesapkitap/features/home/admin/admin_user_page.dart';
+import 'package:hesapkitap/features/home/approver/approver_home_page.dart';
+import 'package:hesapkitap/features/home/customer/customer_home_page.dart';
+import 'package:hesapkitap/features/home/admin/admin_profile_page.dart';
+import 'package:hesapkitap/features/home/user/user_home_page.dart';
 import 'package:hesapkitap/features/splash/splash_screen.dart';
 
 void main() async {
@@ -33,8 +37,12 @@ class MyApp extends StatelessWidget {
         '/roleSelection':
             (context) => const RoleSelectionPage(name: '', email: ''),
         '/admin_home': (context) => const AdminHomePage(),
+        '/admin_users': (context) => const AdminUsersPage(),
+        '/admin_reports': (context) => const AdminReportsPage(),
+        '/admin_profile': (context) => const AdminProfilePage(),
         '/approver_home': (context) => const ApproverHomePage(),
         '/user_home': (context) => const UserHomePage(),
+        '/customer_home': (context) => const CustomerHomePage(),
       },
     );
   }
