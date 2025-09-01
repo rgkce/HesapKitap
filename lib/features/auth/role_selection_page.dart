@@ -133,11 +133,11 @@ class RoleSelectionPage extends StatelessWidget {
                     'approver',
                   ),
                   const SizedBox(height: 20),
-                  _roleButton(context, 'Kullanıcı', Icons.person, 'user'),
+                  _roleButton(context, 'Tedarikçi', Icons.person, 'user'),
                   const SizedBox(height: 20),
                   _roleButton(
                     context,
-                    'Müşteri',
+                    'Satınalma',
                     Icons.shopping_cart,
                     'customer',
                   ),
