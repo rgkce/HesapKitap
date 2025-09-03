@@ -81,13 +81,13 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   // Logo
-                  Container(
-                    width: 200,
-                    height: 200,
-                    decoration: const BoxDecoration(shape: BoxShape.circle),
+                  SizedBox(
+                    width: 300,
+                    height: 300,
+                    // decoration: const BoxDecoration(shape: BoxShape.circle),
                     child: Image.asset('assets/hk-logo.png', fit: BoxFit.cover),
                   ),
-                  const SizedBox(height: 20),
+                  // const SizedBox(height: 20),
                   Text(
                     "HesapKitap",
                     style: AppStyles.heading1.copyWith(

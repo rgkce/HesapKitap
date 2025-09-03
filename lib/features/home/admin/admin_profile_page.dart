@@ -18,7 +18,12 @@ class AdminProfilePage extends StatelessWidget {
           (context) => AlertDialog(
             backgroundColor:
                 isDark ? AppColors.grey800 : AppColors.grey100, // Arka plan
-            title: Text(title, style: AppStyles.heading2),
+            title: Text(
+              title,
+              style: AppStyles.heading2.copyWith(
+                color: isDark ? AppColors.grey200 : AppColors.grey800,
+              ),
+            ),
             content: Text(
               "Bu işlemi yapmak istediğinize emin misiniz?",
               style: AppStyles.heading3.copyWith(

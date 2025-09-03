@@ -156,6 +156,8 @@ class RoleSelectionPage extends StatelessWidget {
     IconData icon,
     String role,
   ) {
+    final bool isDark = Theme.of(context).brightness == Brightness.dark;
+
     return SizedBox(
       width: double.infinity,
       height: 60,
@@ -166,11 +168,11 @@ class RoleSelectionPage extends StatelessWidget {
           title,
           style: AppStyles.buttonText.copyWith(
             fontSize: 20,
-            color: AppColors.grey800,
+            color: isDark ? AppColors.grey200 : AppColors.grey800,
           ),
         ),
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.grey200,
+          backgroundColor: isDark ? AppColors.grey800 : AppColors.grey200,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),
