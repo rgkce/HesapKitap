@@ -85,13 +85,13 @@ class _SignUpPageState extends State<SignUpPage> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   // Logo
-                  SizedBox(
-                    width: 300,
-                    height: 300,
-                    // decoration: const BoxDecoration(shape: BoxShape.circle),
+                  Container(
+                    width: 150,
+                    height: 150,
+                    decoration: const BoxDecoration(shape: BoxShape.circle),
                     child: Image.asset('assets/hk-logo.png', fit: BoxFit.cover),
                   ),
-                  // const SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Text(
                     "HesapKitap Kayıt",
                     style: AppStyles.heading1.copyWith(
