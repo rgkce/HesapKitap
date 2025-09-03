@@ -30,10 +30,17 @@ class ApproverNavBar extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-        color:
-            isDark
-                ? AppColors.grey800.withOpacity(0.9)
-                : AppColors.textLight.withOpacity(0.9),
+        gradient: LinearGradient(
+          colors:
+              isDark
+                  ? [AppColors.grey600, AppColors.primary.withOpacity(0.9)]
+                  : [
+                    AppColors.primary.withOpacity(0.8),
+                    AppColors.accent.withOpacity(0.8),
+                  ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
         boxShadow: const [
           BoxShadow(
             color: Colors.black26,
@@ -69,14 +76,14 @@ class ApproverNavBar extends StatelessWidget {
         children: [
           Icon(
             icon,
-            color: isActive ? AppColors.primary : AppColors.grey400,
+            color: isActive ? AppColors.grey100 : AppColors.grey400,
             size: 28,
           ),
           const SizedBox(height: 4),
           Text(
             label,
             style: AppStyles.bodyText.copyWith(
-              color: isActive ? AppColors.primary : AppColors.grey400,
+              color: isActive ? AppColors.grey100 : AppColors.grey400,
               fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
             ),
           ),

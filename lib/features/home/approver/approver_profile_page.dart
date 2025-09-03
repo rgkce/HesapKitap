@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hesapkitap/core/theme/app_colors.dart';
 import 'package:hesapkitap/core/theme/app_styles.dart';
-import 'package:hesapkitap/features/navigation/admin_navbar.dart';
+import 'package:hesapkitap/features/navigation/approver_navbar.dart';
 
-class AdminProfilePage extends StatelessWidget {
-  const AdminProfilePage({super.key});
+class ApproverProfilePage extends StatelessWidget {
+  const ApproverProfilePage({super.key});
 
   void _showConfirmationDialog(
     BuildContext context,
@@ -12,13 +12,19 @@ class AdminProfilePage extends StatelessWidget {
     VoidCallback onConfirm,
   ) {
     final bool isDark = Theme.of(context).brightness == Brightness.dark;
+
     showDialog(
       context: context,
       builder:
           (context) => AlertDialog(
             backgroundColor:
                 isDark ? AppColors.grey800 : AppColors.grey100, // Arka plan
-            title: Text(title, style: AppStyles.heading2),
+            title: Text(
+              title,
+              style: AppStyles.heading2.copyWith(
+                color: isDark ? AppColors.grey200 : AppColors.grey800,
+              ),
+            ),
             content: Text(
               "Bu işlemi yapmak istediğinize emin misiniz?",
               style: AppStyles.heading3.copyWith(
@@ -96,14 +102,14 @@ class AdminProfilePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  "Ahmet Yılmaz",
+                  "Rümeysa Gökçe",
                   style: AppStyles.heading1.copyWith(
                     color: AppColors.textLight,
                   ),
                 ),
                 const SizedBox(height: 5),
                 Text(
-                  "ahmet@example.com",
+                  "gokce@example.com",
                   style: AppStyles.bodyText.copyWith(
                     color: AppColors.textLight,
                   ),
@@ -180,7 +186,7 @@ class AdminProfilePage extends StatelessWidget {
             ),
           ),
         ),
-        bottomNavigationBar: const AdminNavBar(currentIndex: 3),
+        bottomNavigationBar: const ApproverNavBar(currentIndex: 3),
       ),
     );
   }

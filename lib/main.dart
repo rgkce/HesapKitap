@@ -8,6 +8,9 @@ import 'package:hesapkitap/features/home/admin/admin_home_page.dart';
 import 'package:hesapkitap/features/home/admin/admin_reports_page.dart';
 import 'package:hesapkitap/features/home/admin/admin_user_page.dart';
 import 'package:hesapkitap/features/home/approver/approver_home_page.dart';
+import 'package:hesapkitap/features/home/approver/approver_profile_page.dart';
+import 'package:hesapkitap/features/home/approver/approver_reports_page.dart';
+import 'package:hesapkitap/features/home/approver/approver_request_page.dart';
 import 'package:hesapkitap/features/home/customer/customer_home_page.dart';
 import 'package:hesapkitap/features/home/admin/admin_profile_page.dart';
 import 'package:hesapkitap/features/home/user/user_home_page.dart';
@@ -36,12 +39,19 @@ class MyApp extends StatelessWidget {
         '/forgot_password': (context) => const ForgotPasswordPage(),
         '/roleSelection':
             (context) => const RoleSelectionPage(name: '', email: ''),
+        // Admin Routes
         '/admin_home': (context) => const AdminHomePage(),
         '/admin_users': (context) => const AdminUsersPage(),
         '/admin_reports': (context) => const AdminReportsPage(),
         '/admin_profile': (context) => const AdminProfilePage(),
+        //Approver Routes
         '/approver_home': (context) => const ApproverHomePage(),
+        '/approver_requests': (context) => const ApproverRequestsPage(),
+        '/approver_reports': (context) => const ApproverReportsPage(),
+        '/approver_profile': (context) => const ApproverProfilePage(),
+        //User Routes
         '/user_home': (context) => const UserHomePage(),
+        //Customer Routes
         '/customer_home': (context) => const CustomerHomePage(),
       },
     );
