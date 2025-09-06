@@ -101,14 +101,14 @@ class AdminProfilePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  "Ahmet Yılmaz",
+                  "Rümeysa Gökçe Admin",
                   style: AppStyles.heading1.copyWith(
                     color: AppColors.textLight,
                   ),
                 ),
                 const SizedBox(height: 5),
                 Text(
-                  "ahmet@example.com",
+                  "gokce@example.com",
                   style: AppStyles.bodyText.copyWith(
                     color: AppColors.textLight,
                   ),

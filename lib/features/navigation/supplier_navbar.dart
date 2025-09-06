@@ -2,24 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:hesapkitap/core/theme/app_colors.dart';
 import 'package:hesapkitap/core/theme/app_styles.dart';
 
-class UserNavBar extends StatelessWidget {
+class SupplierNavBar extends StatelessWidget {
   final int currentIndex;
 
-  const UserNavBar({super.key, required this.currentIndex});
+  const SupplierNavBar({super.key, required this.currentIndex});
 
   void _onItemTapped(BuildContext context, int index) {
     switch (index) {
       case 0:
-        Navigator.pushReplacementNamed(context, '/user_home');
+        Navigator.pushReplacementNamed(context, '/supplier_home');
         break;
       case 1:
-        Navigator.pushReplacementNamed(context, '/user_requests');
+        Navigator.pushReplacementNamed(context, '/supplier_requests');
         break;
       case 2:
-        Navigator.pushReplacementNamed(context, '/user_reports');
+        Navigator.pushReplacementNamed(context, '/supplier_reports');
         break;
       case 3:
-        Navigator.pushReplacementNamed(context, '/user_profile');
+        Navigator.pushReplacementNamed(context, '/supplier_profile');
         break;
     }
   }
@@ -30,10 +30,17 @@ class UserNavBar extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-        color:
-            isDark
-                ? AppColors.grey800.withOpacity(0.9)
-                : AppColors.textLight.withOpacity(0.9),
+        gradient: LinearGradient(
+          colors:
+              isDark
+                  ? [AppColors.grey600, AppColors.primary.withOpacity(0.9)]
+                  : [
+                    AppColors.primary.withOpacity(0.8),
+                    AppColors.accent.withOpacity(0.8),
+                  ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
         boxShadow: const [
           BoxShadow(
             color: Colors.black26,
@@ -69,14 +76,14 @@ class UserNavBar extends StatelessWidget {
         children: [
           Icon(
             icon,
-            color: isActive ? AppColors.primary : AppColors.grey400,
+            color: isActive ? AppColors.grey100 : AppColors.grey400,
             size: 28,
           ),
           const SizedBox(height: 4),
           Text(
             label,
             style: AppStyles.bodyText.copyWith(
-              color: isActive ? AppColors.primary : AppColors.grey400,
+              color: isActive ? AppColors.grey100 : AppColors.grey400,
               fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
             ),
           ),

@@ -4,7 +4,7 @@ import 'package:hesapkitap/core/theme/app_styles.dart';
 import 'package:hesapkitap/features/home/admin/admin_home_page.dart';
 import 'package:hesapkitap/features/home/approver/approver_home_page.dart';
 import 'package:hesapkitap/features/home/customer/customer_home_page.dart';
-import 'package:hesapkitap/features/home/user/user_home_page.dart';
+import 'package:hesapkitap/features/home/supplier/supplier_home_page.dart';
 
 class RoleSelectionPage extends StatelessWidget {
   const RoleSelectionPage({
@@ -53,14 +53,14 @@ class RoleSelectionPage extends StatelessWidget {
                   case 'approver':
                     page = const ApproverHomePage();
                     break;
-                  case 'user':
-                    page = const UserHomePage();
+                  case 'supplier':
+                    page = const SupplierHomePage();
                     break;
                   case 'customer':
                     page = const CustomerHomePage();
                     break;
                   default:
-                    page = const UserHomePage();
+                    page = const AdminHomePage();
                 }
                 Navigator.pushReplacement(
                   context,
@@ -133,7 +133,7 @@ class RoleSelectionPage extends StatelessWidget {
                     'approver',
                   ),
                   const SizedBox(height: 20),
-                  _roleButton(context, 'Tedarikçi', Icons.person, 'user'),
+                  _roleButton(context, 'Tedarikçi', Icons.person, 'supplier'),
                   const SizedBox(height: 20),
                   _roleButton(
                     context,

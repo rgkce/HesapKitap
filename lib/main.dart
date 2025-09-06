@@ -13,7 +13,10 @@ import 'package:hesapkitap/features/home/approver/approver_reports_page.dart';
 import 'package:hesapkitap/features/home/approver/approver_request_page.dart';
 import 'package:hesapkitap/features/home/customer/customer_home_page.dart';
 import 'package:hesapkitap/features/home/admin/admin_profile_page.dart';
-import 'package:hesapkitap/features/home/user/user_home_page.dart';
+import 'package:hesapkitap/features/home/supplier/supplier_home_page.dart';
+import 'package:hesapkitap/features/home/supplier/supplier_profile_page.dart';
+import 'package:hesapkitap/features/home/supplier/supplier_reports_page.dart';
+import 'package:hesapkitap/features/home/supplier/supplier_request_page.dart';
 import 'package:hesapkitap/features/splash/splash_screen.dart';
 
 void main() async {
@@ -50,7 +53,10 @@ class MyApp extends StatelessWidget {
         '/approver_reports': (context) => const ApproverReportsPage(),
         '/approver_profile': (context) => const ApproverProfilePage(),
         //User Routes
-        '/user_home': (context) => const UserHomePage(),
+        '/supplier_home': (context) => const SupplierHomePage(),
+        '/supplier_requests': (context) => const SupplierRequestsPage(),
+        '/supplier_reports': (context) => const SupplierReportsPage(),
+        '/supplier_profile': (context) => const SupplierProfilePage(),
         //Customer Routes
         '/customer_home': (context) => const CustomerHomePage(),
       },

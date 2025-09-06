@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hesapkitap/core/theme/app_colors.dart';
 import 'package:hesapkitap/core/theme/app_styles.dart';
-import 'package:hesapkitap/features/navigation/approver_navbar.dart';
+import 'package:hesapkitap/features/navigation/supplier_navbar.dart';
 
-class ApproverProfilePage extends StatelessWidget {
-  const ApproverProfilePage({super.key});
+class SupplierProfilePage extends StatelessWidget {
+  const SupplierProfilePage({super.key});
 
   void _showConfirmationDialog(
     BuildContext context,
@@ -17,8 +17,7 @@ class ApproverProfilePage extends StatelessWidget {
       context: context,
       builder:
           (context) => AlertDialog(
-            backgroundColor:
-                isDark ? AppColors.grey800 : AppColors.grey100, // Arka plan
+            backgroundColor: isDark ? AppColors.grey800 : AppColors.grey100,
             title: Text(
               title,
               style: AppStyles.heading2.copyWith(
@@ -69,7 +68,7 @@ class ApproverProfilePage extends StatelessWidget {
     final bool isDark = Theme.of(context).brightness == Brightness.dark;
 
     return WillPopScope(
-      onWillPop: () async => false, // Telefonun geri tuşunu engelle
+      onWillPop: () async => false,
       child: Scaffold(
         body: Container(
           width: double.infinity,
@@ -102,7 +101,7 @@ class ApproverProfilePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  "Rümeysa Gökçe Yönetici",
+                  "Rümeysa Gökçe Tedarikçi",
                   style: AppStyles.heading1.copyWith(
                     color: AppColors.textLight,
                   ),
@@ -186,7 +185,7 @@ class ApproverProfilePage extends StatelessWidget {
             ),
           ),
         ),
-        bottomNavigationBar: const ApproverNavBar(currentIndex: 3),
+        bottomNavigationBar: const SupplierNavBar(currentIndex: 3),
       ),
     );
   }
