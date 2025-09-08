@@ -38,7 +38,10 @@ class CustomerDashboardPage extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [AppColors.primary.withOpacity(0.9), AppColors.accent],
+            colors:
+                isDark
+                    ? [AppColors.grey800, AppColors.primary.withOpacity(0.8)]
+                    : [AppColors.primary.withOpacity(0.8), AppColors.accent],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),

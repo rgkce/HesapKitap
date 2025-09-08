@@ -42,6 +42,8 @@ class _CustomerOffersPageState extends State<CustomerOffersPage> {
 
   @override
   Widget build(BuildContext context) {
+    final bool isDark = Theme.of(context).brightness == Brightness.dark;
+
     return WillPopScope(
       onWillPop: () async => false,
 
@@ -49,7 +51,10 @@ class _CustomerOffersPageState extends State<CustomerOffersPage> {
         body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [AppColors.primary.withOpacity(0.9), AppColors.accent],
+              colors:
+                  isDark
+                      ? [AppColors.grey800, AppColors.primary.withOpacity(0.8)]
+                      : [AppColors.primary.withOpacity(0.8), AppColors.accent],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
