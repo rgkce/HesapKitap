@@ -79,89 +79,93 @@ class SupplierRequestsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool isDark = Theme.of(context).brightness == Brightness.dark;
 
-    return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors:
-                isDark
-                    ? [AppColors.grey800, AppColors.primary.withOpacity(0.8)]
-                    : [
-                      AppColors.primary.withOpacity(0.8),
-                      AppColors.accent.withOpacity(0.8),
-                    ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+    return WillPopScope(
+      onWillPop: () async => false,
+
+      child: Scaffold(
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors:
+                  isDark
+                      ? [AppColors.grey800, AppColors.primary.withOpacity(0.8)]
+                      : [
+                        AppColors.primary.withOpacity(0.8),
+                        AppColors.accent.withOpacity(0.8),
+                      ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
           ),
-        ),
-        child: SafeArea(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Center(
-                  child: Text(
-                    "Tedarikçi Talepleri",
-                    style: AppStyles.heading1.copyWith(
-                      color: AppColors.textLight,
-                      fontWeight: FontWeight.bold,
+          child: SafeArea(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Center(
+                    child: Text(
+                      "Tedarikçi Talepleri",
+                      style: AppStyles.heading1.copyWith(
+                        color: AppColors.textLight,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 8),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: ListView.builder(
-                    itemCount: requests.length,
-                    itemBuilder: (context, index) {
-                      final req = requests[index];
-                      return Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        margin: const EdgeInsets.symmetric(vertical: 8),
-                        child: ListTile(
-                          title: Text(
-                            req["title"]!,
-                            style: AppStyles.bodyTextBold.copyWith(
-                              fontSize: 18,
-                              color:
-                                  isDark
-                                      ? AppColors.grey200
-                                      : AppColors.grey800,
-                            ),
+                const SizedBox(height: 8),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: ListView.builder(
+                      itemCount: requests.length,
+                      itemBuilder: (context, index) {
+                        final req = requests[index];
+                        return Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
                           ),
-                          subtitle: Text(
-                            req["details"]!,
-                            style: AppStyles.bodyText.copyWith(
-                              color:
-                                  isDark
-                                      ? AppColors.grey200
-                                      : AppColors.grey800,
-                            ),
-                          ),
-                          trailing: const Icon(
-                            Icons.arrow_forward_ios,
-                            size: 16,
-                          ),
-                          onTap:
-                              () => _showApprovalDialog(
-                                context,
-                                req["title"] ?? "",
+                          margin: const EdgeInsets.symmetric(vertical: 8),
+                          child: ListTile(
+                            title: Text(
+                              req["title"]!,
+                              style: AppStyles.bodyTextBold.copyWith(
+                                fontSize: 18,
+                                color:
+                                    isDark
+                                        ? AppColors.grey200
+                                        : AppColors.grey800,
                               ),
-                        ),
-                      );
-                    },
+                            ),
+                            subtitle: Text(
+                              req["details"]!,
+                              style: AppStyles.bodyText.copyWith(
+                                color:
+                                    isDark
+                                        ? AppColors.grey200
+                                        : AppColors.grey800,
+                              ),
+                            ),
+                            trailing: const Icon(
+                              Icons.arrow_forward_ios,
+                              size: 16,
+                            ),
+                            onTap:
+                                () => _showApprovalDialog(
+                                  context,
+                                  req["title"] ?? "",
+                                ),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
+        bottomNavigationBar: SupplierNavBar(currentIndex: 1),
       ),
-      bottomNavigationBar: SupplierNavBar(currentIndex: 1),
     );
   }
 }

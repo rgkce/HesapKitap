@@ -3,7 +3,7 @@ import 'package:hesapkitap/core/theme/app_colors.dart';
 import 'package:hesapkitap/core/theme/app_styles.dart';
 import 'package:hesapkitap/features/home/admin/admin_home_page.dart';
 import 'package:hesapkitap/features/home/approver/approver_home_page.dart';
-import 'package:hesapkitap/features/home/customer/customer_home_page.dart';
+import 'package:hesapkitap/features/home/customer/customer_dashboard_page.dart.dart';
 import 'package:hesapkitap/features/home/supplier/supplier_home_page.dart';
 
 class RoleSelectionPage extends StatelessWidget {
@@ -57,7 +57,7 @@ class RoleSelectionPage extends StatelessWidget {
                     page = const SupplierHomePage();
                     break;
                   case 'customer':
-                    page = const CustomerHomePage();
+                    page = const CustomerDashboardPage();
                     break;
                   default:
                     page = const AdminHomePage();

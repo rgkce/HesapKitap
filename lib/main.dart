@@ -11,8 +11,11 @@ import 'package:hesapkitap/features/home/approver/approver_home_page.dart';
 import 'package:hesapkitap/features/home/approver/approver_profile_page.dart';
 import 'package:hesapkitap/features/home/approver/approver_reports_page.dart';
 import 'package:hesapkitap/features/home/approver/approver_request_page.dart';
-import 'package:hesapkitap/features/home/customer/customer_home_page.dart';
+import 'package:hesapkitap/features/home/customer/customer_dashboard_page.dart.dart';
 import 'package:hesapkitap/features/home/admin/admin_profile_page.dart';
+import 'package:hesapkitap/features/home/customer/customer_offers_page.dart';
+import 'package:hesapkitap/features/home/customer/customer_profile_page.dart';
+import 'package:hesapkitap/features/home/customer/customer_reports_page.dart';
 import 'package:hesapkitap/features/home/supplier/supplier_home_page.dart';
 import 'package:hesapkitap/features/home/supplier/supplier_profile_page.dart';
 import 'package:hesapkitap/features/home/supplier/supplier_reports_page.dart';
@@ -52,13 +55,16 @@ class MyApp extends StatelessWidget {
         '/approver_requests': (context) => const ApproverRequestsPage(),
         '/approver_reports': (context) => const ApproverReportsPage(),
         '/approver_profile': (context) => const ApproverProfilePage(),
-        //User Routes
+        //Supplier Routes
         '/supplier_home': (context) => const SupplierHomePage(),
         '/supplier_requests': (context) => const SupplierRequestsPage(),
         '/supplier_reports': (context) => const SupplierReportsPage(),
         '/supplier_profile': (context) => const SupplierProfilePage(),
         //Customer Routes
-        '/customer_home': (context) => const CustomerHomePage(),
+        '/customer_home': (context) => const CustomerDashboardPage(),
+        '/customer_orders': (context) => CustomerOffersPage(),
+        '/customer_reports': (context) => const CustomerReportsPage(),
+        '/customer_profile': (context) => const CustomerProfilePage(),
       },
     );
   }
