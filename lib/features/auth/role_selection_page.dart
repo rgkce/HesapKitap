@@ -4,6 +4,7 @@ import 'package:hesapkitap/core/theme/app_styles.dart';
 import 'package:hesapkitap/features/home/admin/admin_home_page.dart';
 import 'package:hesapkitap/features/home/approver/approver_home_page.dart';
 import 'package:hesapkitap/features/home/customer/customer_dashboard_page.dart.dart';
+import 'package:hesapkitap/features/home/customer_approver/customapprover_home_page.dart';
 import 'package:hesapkitap/features/home/supplier/supplier_home_page.dart';
 
 class RoleSelectionPage extends StatelessWidget {
@@ -58,6 +59,9 @@ class RoleSelectionPage extends StatelessWidget {
                     break;
                   case 'customer':
                     page = const CustomerDashboardPage();
+                    break;
+                  case 'customer approver':
+                    page = const CustomApproverHomePage();
                     break;
                   default:
                     page = const AdminHomePage();
@@ -140,6 +144,13 @@ class RoleSelectionPage extends StatelessWidget {
                     'Satınalma',
                     Icons.shopping_cart,
                     'customer',
+                  ),
+                  const SizedBox(height: 20),
+                  _roleButton(
+                    context,
+                    'Satınalma Yöneticisi',
+                    Icons.shopping_cart_checkout,
+                    'customer approver',
                   ),
                 ],
               ),

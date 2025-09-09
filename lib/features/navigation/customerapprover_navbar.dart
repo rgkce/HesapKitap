@@ -2,24 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:hesapkitap/core/theme/app_colors.dart';
 import 'package:hesapkitap/core/theme/app_styles.dart';
 
-class CustomerNavBar extends StatelessWidget {
+class CustomApproverNavBar extends StatelessWidget {
   final int currentIndex;
 
-  const CustomerNavBar({super.key, required this.currentIndex});
+  const CustomApproverNavBar({super.key, required this.currentIndex});
 
   void _onItemTapped(BuildContext context, int index) {
     switch (index) {
       case 0:
-        Navigator.pushReplacementNamed(context, '/customer_home');
+        Navigator.pushReplacementNamed(context, '/customapprover_home');
         break;
       case 1:
-        Navigator.pushReplacementNamed(context, '/customer_offers');
+        Navigator.pushReplacementNamed(context, '/customapprover_offers');
         break;
       case 2:
-        Navigator.pushReplacementNamed(context, '/customer_reports');
+        Navigator.pushReplacementNamed(context, '/customapprover_reports');
         break;
       case 3:
-        Navigator.pushReplacementNamed(context, '/customer_profile');
+        Navigator.pushReplacementNamed(context, '/customapprover_profile');
         break;
     }
   }
