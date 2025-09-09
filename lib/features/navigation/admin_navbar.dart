@@ -53,7 +53,7 @@ class AdminNavBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _navItem(context, 0, Icons.dashboard, "Ana Sayfa"),
+          _navItem(context, 0, Icons.home, "Ana Sayfa"),
           _navItem(context, 1, Icons.group, "Kullanıcılar"),
           _navItem(context, 2, Icons.bar_chart, "Raporlar"),
           _navItem(context, 3, Icons.person, "Profil"),
