@@ -46,9 +46,26 @@ class ApproverHomePage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "Yönetici Ana Sayfa",
-                        style: AppStyles.heading1.copyWith(color: Colors.white),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Yönetici Ana Sayfa",
+                            style: AppStyles.heading1.copyWith(
+                              color: AppColors.textLight,
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/approver_profile');
+                            },
+                            icon: Icon(
+                              Icons.settings,
+                              color: AppColors.textLight,
+                              size: 28,
+                            ),
+                          ),
+                        ],
                       ),
                       const SizedBox(height: 20),
 
@@ -84,43 +101,43 @@ class ApproverHomePage extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height: 20),
-                      // 🔹 Hızlı İşlemler
-                      Text(
-                        "Hızlı İşlemler",
-                        style: AppStyles.heading2.copyWith(color: Colors.white),
-                      ),
-                      const SizedBox(height: 10),
+                      // // 🔹 Hızlı İşlemler
+                      // Text(
+                      //   "Hızlı İşlemler",
+                      //   style: AppStyles.heading2.copyWith(color: Colors.white),
+                      // ),
+                      // const SizedBox(height: 10),
 
-                      SizedBox(
-                        height: 110,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                            _buildQuickAction(
-                              icon: Icons.list_alt,
-                              label: "Talepler",
-                              color: AppColors.primary,
-                            ),
-                            _buildQuickAction(
-                              icon: Icons.add_task,
-                              label: "Yeni Talep",
-                              color: AppColors.success,
-                            ),
-                            _buildQuickAction(
-                              icon: Icons.bar_chart,
-                              label: "Raporlar",
-                              color: AppColors.warning,
-                            ),
-                            _buildQuickAction(
-                              icon: Icons.people,
-                              label: "Kullanıcılar",
-                              color: AppColors.accent,
-                            ),
-                          ],
-                        ),
-                      ),
+                      // SizedBox(
+                      //   height: 110,
+                      //   child: ListView(
+                      //     scrollDirection: Axis.horizontal,
+                      //     children: [
+                      //       _buildQuickAction(
+                      //         icon: Icons.list_alt,
+                      //         label: "Talepler",
+                      //         color: AppColors.primary,
+                      //       ),
+                      //       _buildQuickAction(
+                      //         icon: Icons.add_task,
+                      //         label: "Yeni Talep",
+                      //         color: AppColors.success,
+                      //       ),
+                      //       _buildQuickAction(
+                      //         icon: Icons.bar_chart,
+                      //         label: "Raporlar",
+                      //         color: AppColors.warning,
+                      //       ),
+                      //       _buildQuickAction(
+                      //         icon: Icons.people,
+                      //         label: "Kullanıcılar",
+                      //         color: AppColors.accent,
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
 
-                      const SizedBox(height: 30),
+                      // const SizedBox(height: 30),
 
                       // 🔹 Onay Dağılım Pie Chart
                       Container(
@@ -128,7 +145,7 @@ class ApproverHomePage extends StatelessWidget {
                         margin: const EdgeInsets.symmetric(vertical: 16),
                         padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
-                          color: AppColors.grey100.withOpacity(0.7),
+                          color: AppColors.grey100.withOpacity(0.1),
                           borderRadius: BorderRadius.circular(24),
                           boxShadow: [
                             BoxShadow(
@@ -201,7 +218,9 @@ class ApproverHomePage extends StatelessWidget {
                       // 🔹 Bekleyen Talepler
                       Text(
                         "Bekleyen Talepler",
-                        style: AppStyles.heading2.copyWith(color: Colors.white),
+                        style: AppStyles.heading2.copyWith(
+                          color: AppColors.grey100,
+                        ),
                       ),
                       const SizedBox(height: 10),
                       SizedBox(
@@ -216,7 +235,7 @@ class ApproverHomePage extends StatelessWidget {
                               margin: const EdgeInsets.only(right: 16),
                               padding: const EdgeInsets.all(16),
                               decoration: BoxDecoration(
-                                color: AppColors.grey100.withOpacity(0.9),
+                                color: AppColors.grey100.withOpacity(0.8),
                                 borderRadius: BorderRadius.circular(20),
                                 boxShadow: [
                                   BoxShadow(
@@ -283,7 +302,7 @@ class ApproverHomePage extends StatelessWidget {
       width: 160,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.grey100.withOpacity(0.9), // Açık renk, gradient yok
+        color: AppColors.grey100.withOpacity(0.8),
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
@@ -322,48 +341,48 @@ class ApproverHomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildQuickAction({
-    required IconData icon,
-    required String label,
-    required Color color,
-  }) {
-    return Container(
-      width: 90,
-      margin: const EdgeInsets.only(right: 16),
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: AppColors.grey100.withOpacity(0.9),
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black12,
-            blurRadius: 8,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CircleAvatar(
-            radius: 24,
-            backgroundColor: color.withOpacity(0.2),
-            child: Icon(icon, color: color, size: 28),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            label,
-            textAlign: TextAlign.center,
-            style: AppStyles.bodyText.copyWith(
-              color: Colors.black87,
-              fontWeight: FontWeight.bold,
-              fontSize: 12,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+  // Widget _buildQuickAction({
+  //   required IconData icon,
+  //   required String label,
+  //   required Color color,
+  // }) {
+  //   return Container(
+  //     width: 90,
+  //     margin: const EdgeInsets.only(right: 16),
+  //     padding: const EdgeInsets.all(12),
+  //     decoration: BoxDecoration(
+  //       color: AppColors.grey100.withOpacity(0.9),
+  //       borderRadius: BorderRadius.circular(20),
+  //       boxShadow: [
+  //         BoxShadow(
+  //           color: Colors.black12,
+  //           blurRadius: 8,
+  //           offset: const Offset(0, 4),
+  //         ),
+  //       ],
+  //     ),
+  //     child: Column(
+  //       mainAxisAlignment: MainAxisAlignment.center,
+  //       children: [
+  //         CircleAvatar(
+  //           radius: 24,
+  //           backgroundColor: color.withOpacity(0.2),
+  //           child: Icon(icon, color: color, size: 28),
+  //         ),
+  //         const SizedBox(height: 8),
+  //         Text(
+  //           label,
+  //           textAlign: TextAlign.center,
+  //           style: AppStyles.bodyText.copyWith(
+  //             color: Colors.black87,
+  //             fontWeight: FontWeight.bold,
+  //             fontSize: 12,
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 
   // Widget _buildRequestCard(String title, String status) {
   //   Color statusColor =

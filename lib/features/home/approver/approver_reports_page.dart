@@ -38,12 +38,10 @@ class ApproverReportsPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                    Text(
                       "Raporlar",
-                      style: TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.grey100,
+                      style: AppStyles.heading1.copyWith(
+                        color: AppColors.textLight,
                       ),
                     ),
                     const SizedBox(height: 20),
@@ -240,7 +238,7 @@ class ApproverReportsPage extends StatelessWidget {
             ),
           ),
         ),
-        bottomNavigationBar: const ApproverNavBar(currentIndex: 2),
+        bottomNavigationBar: const ApproverNavBar(currentIndex: 3),
       ),
     );
   }

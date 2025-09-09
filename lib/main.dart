@@ -11,6 +11,7 @@ import 'package:hesapkitap/features/home/approver/approver_home_page.dart';
 import 'package:hesapkitap/features/home/approver/approver_profile_page.dart';
 import 'package:hesapkitap/features/home/approver/approver_reports_page.dart';
 import 'package:hesapkitap/features/home/approver/approver_request_page.dart';
+import 'package:hesapkitap/features/home/approver/approversupplier_page.dart';
 import 'package:hesapkitap/features/home/customer/customer_dashboard_page.dart.dart';
 import 'package:hesapkitap/features/home/admin/admin_profile_page.dart';
 import 'package:hesapkitap/features/home/customer/customer_offers_page.dart';
@@ -58,6 +59,7 @@ class MyApp extends StatelessWidget {
         '/approver_home': (context) => const ApproverHomePage(),
         '/approver_requests': (context) => const ApproverRequestsPage(),
         '/approver_reports': (context) => const ApproverReportsPage(),
+        '/approver_suppliers': (context) => const ApproverSuppliersPage(),
         '/approver_profile': (context) => const ApproverProfilePage(),
         //Supplier Routes
         '/supplier_home': (context) => const SupplierHomePage(),
