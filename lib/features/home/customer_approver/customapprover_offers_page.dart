@@ -67,12 +67,13 @@ class _CustomApproverOffersPageState extends State<CustomApproverOffersPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   /// Başlık
-                  Text(
-                    "Tekliflerim",
-                    style: AppStyles.heading1.copyWith(
-                      color: AppColors.textLight,
-                      fontSize: 26,
-                      fontWeight: FontWeight.bold,
+                  Center(
+                    child: Text(
+                      "Teklifler",
+                      style: AppStyles.heading1.copyWith(
+                        color: AppColors.textLight,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),

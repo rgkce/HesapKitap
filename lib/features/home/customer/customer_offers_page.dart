@@ -37,6 +37,7 @@ class _CustomerOffersPageState extends State<CustomerOffersPage> {
       "amount": "8,000 ₺",
       "date": "07.09.2025",
       "status": "Reddedildi",
+      "reason": "Fiyat yüksek bulundu",
     },
   ];
 
@@ -46,7 +47,6 @@ class _CustomerOffersPageState extends State<CustomerOffersPage> {
 
     return WillPopScope(
       onWillPop: () async => false,
-
       child: Scaffold(
         body: Container(
           decoration: BoxDecoration(
@@ -66,12 +66,13 @@ class _CustomerOffersPageState extends State<CustomerOffersPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   /// Başlık
-                  Text(
-                    "Tekliflerim",
-                    style: AppStyles.heading1.copyWith(
-                      color: AppColors.textLight,
-                      fontSize: 26,
-                      fontWeight: FontWeight.bold,
+                  Center(
+                    child: Text(
+                      "Tekliflerim",
+                      style: AppStyles.heading1.copyWith(
+                        color: AppColors.textLight,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -112,7 +113,6 @@ class _CustomerOffersPageState extends State<CustomerOffersPage> {
                       ]),
                     ],
                   ),
-
                   const SizedBox(height: 20),
 
                   /// Teklif Listesi
@@ -182,6 +182,22 @@ class _CustomerOffersPageState extends State<CustomerOffersPage> {
                                           fontSize: 12,
                                         ),
                                       ),
+                                      // Reddedilme sebebi gösterimi
+                                      if (offer["status"] == "Reddedildi" &&
+                                          offer["reason"] != null)
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                            top: 4,
+                                          ),
+                                          child: Text(
+                                            "Sebep: ${offer["reason"]}",
+                                            style: AppStyles.bodyText.copyWith(
+                                              color: AppColors.error
+                                                  .withOpacity(0.9),
+                                              fontSize: 12,
+                                            ),
+                                          ),
+                                        ),
                                     ],
                                   ),
                                 ),
@@ -225,7 +241,11 @@ class _CustomerOffersPageState extends State<CustomerOffersPage> {
                                   icon: const Icon(Icons.more_vert),
                                   color: AppColors.textLight.withOpacity(0.8),
                                   onPressed: () {
-                                    // daha fazla aksiyon (popup menu olabilir)
+                                    if (offer["status"] == "Reddedildi") {
+                                      _showRejectReasonDialog(context, offer);
+                                    } else {
+                                      // Diğer aksiyonlar
+                                    }
                                   },
                                 ),
                               ],
@@ -317,7 +337,6 @@ class _CustomerOffersPageState extends State<CustomerOffersPage> {
                       ],
                     ),
                   ),
-
                   const SizedBox(height: 12),
 
                   /// Açıklama (Legend)
@@ -336,6 +355,72 @@ class _CustomerOffersPageState extends State<CustomerOffersPage> {
         ),
         bottomNavigationBar: const CustomerNavBar(currentIndex: 1),
       ),
+    );
+  }
+
+  /// Reddetme sebebi dialog
+  void _showRejectReasonDialog(
+    BuildContext context,
+    Map<String, String> offer,
+  ) {
+    final TextEditingController reasonController = TextEditingController(
+      text: offer["reason"] ?? "",
+    );
+    final bool isDark = Theme.of(context).brightness == Brightness.dark;
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: isDark ? AppColors.grey800 : AppColors.grey100,
+          title: Text(
+            "Reddetme Sebebi",
+            style: AppStyles.heading2.copyWith(
+              color: isDark ? AppColors.grey200 : AppColors.grey800,
+            ),
+          ),
+          content: TextField(
+            controller: reasonController,
+            maxLines: 3,
+            style: AppStyles.bodyText.copyWith(
+              color: isDark ? AppColors.grey200 : AppColors.grey800,
+            ),
+            decoration: InputDecoration(
+              hintText: "Reddetme sebebini girin...",
+              hintStyle: AppStyles.bodyText.copyWith(
+                color: isDark ? AppColors.grey400 : AppColors.grey400,
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text(
+                "İptal",
+                style: AppStyles.bodyTextBold.copyWith(color: AppColors.error),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  offer["reason"] = reasonController.text;
+                });
+                Navigator.pop(context);
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: AppColors.error),
+              child: Text(
+                "Kaydet",
+                style: AppStyles.bodyTextBold.copyWith(
+                  color: AppColors.textLight,
+                ),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 

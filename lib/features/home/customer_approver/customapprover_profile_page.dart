@@ -89,6 +89,32 @@ class CustomApproverProfilePage extends StatelessWidget {
           child: SafeArea(
             child: Column(
               children: [
+                Row(
+                  children: [
+                    SizedBox(width: 20),
+                    IconButton(
+                      icon: Icon(
+                        Icons.arrow_back_ios,
+                        color: isDark ? AppColors.grey400 : AppColors.grey200,
+                        size: 30,
+                      ),
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(
+                          context,
+                          '/customapprover_home',
+                        );
+                      },
+                    ),
+                    SizedBox(width: 40),
+                    Text(
+                      "Satınalma Profil",
+                      style: AppStyles.heading1.copyWith(
+                        color: AppColors.textLight,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
                 const SizedBox(height: 20),
                 CircleAvatar(
                   radius: 60,

@@ -91,6 +91,33 @@ class ApproverProfilePage extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(height: 20),
+                Row(
+                  children: [
+                    SizedBox(width: 20),
+                    IconButton(
+                      icon: Icon(
+                        Icons.arrow_back_ios,
+                        color: isDark ? AppColors.grey400 : AppColors.grey200,
+                        size: 30,
+                      ),
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(
+                          context,
+                          '/approver_home',
+                        );
+                      },
+                    ),
+                    SizedBox(width: 40),
+                    Text(
+                      "Yönetici Profil",
+                      style: AppStyles.heading1.copyWith(
+                        color: AppColors.textLight,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
                 CircleAvatar(
                   radius: 60,
                   backgroundColor: AppColors.grey800,
@@ -103,7 +130,7 @@ class ApproverProfilePage extends StatelessWidget {
                 const SizedBox(height: 20),
                 Text(
                   "Rümeysa Gökçe Yönetici",
-                  style: AppStyles.heading1.copyWith(
+                  style: AppStyles.heading2.copyWith(
                     color: AppColors.textLight,
                   ),
                 ),

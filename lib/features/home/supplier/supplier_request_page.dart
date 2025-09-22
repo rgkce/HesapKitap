@@ -47,6 +47,19 @@ class SupplierRequestsPage extends StatelessWidget {
                 ),
               ),
             ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                _showRejectionDialog(context, requestTitle);
+              },
+              child: Text(
+                "Reddet",
+                style: AppStyles.buttonText.copyWith(
+                  fontSize: 18,
+                  color: AppColors.error,
+                ),
+              ),
+            ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor:
@@ -56,16 +69,82 @@ class SupplierRequestsPage extends StatelessWidget {
               ),
               onPressed: () {
                 Navigator.pop(context);
-                // TODO: Onay işlemi burada yapılacak
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text("✅ '$requestTitle' onaylandı")),
+                );
               },
               child: Text(
                 "Onayla",
                 style: AppStyles.buttonText.copyWith(
                   fontSize: 18,
-                  color:
-                      isDark
-                          ? AppColors.grey100.withOpacity(0.9)
-                          : AppColors.grey100,
+                  color: AppColors.grey100,
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showRejectionDialog(BuildContext context, String requestTitle) {
+    final bool isDark = Theme.of(context).brightness == Brightness.dark;
+    final TextEditingController reasonController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: isDark ? AppColors.grey800 : AppColors.grey100,
+          title: Text(
+            "Red Sebebi",
+            style: AppStyles.heading2.copyWith(
+              color: isDark ? AppColors.grey200 : AppColors.grey800,
+            ),
+          ),
+          content: TextField(
+            controller: reasonController,
+            maxLines: 3,
+            decoration: InputDecoration(
+              hintText: "Reddetme sebebini giriniz...",
+              hintStyle: TextStyle(
+                color: isDark ? AppColors.grey400 : AppColors.grey600,
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              filled: true,
+              fillColor: isDark ? AppColors.grey800 : AppColors.grey100,
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text(
+                "İptal",
+                style: AppStyles.buttonText.copyWith(
+                  fontSize: 18,
+                  color: AppColors.warning,
+                ),
+              ),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(backgroundColor: AppColors.error),
+              onPressed: () {
+                Navigator.pop(context);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      "❌ '$requestTitle' reddedildi. Sebep: ${reasonController.text}",
+                    ),
+                  ),
+                );
+              },
+              child: Text(
+                "Gönder",
+                style: AppStyles.buttonText.copyWith(
+                  fontSize: 18,
+                  color: AppColors.grey100,
                 ),
               ),
             ),
@@ -81,7 +160,6 @@ class SupplierRequestsPage extends StatelessWidget {
 
     return WillPopScope(
       onWillPop: () async => false,
-
       child: Scaffold(
         body: Container(
           decoration: BoxDecoration(

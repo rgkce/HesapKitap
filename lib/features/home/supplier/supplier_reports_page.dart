@@ -81,12 +81,16 @@ class SupplierReportsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     /// Başlık ve İndirme Butonları
-                    Text(
-                      "Raporlar",
-                      style: AppStyles.heading1.copyWith(
-                        color: AppColors.textLight,
-                        fontSize: 26,
-                        fontWeight: FontWeight.bold,
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Center(
+                        child: Text(
+                          "Tedarikçi Raporlar",
+                          style: AppStyles.heading1.copyWith(
+                            color: AppColors.textLight,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                     ),
                     SizedBox(height: 20),
@@ -466,7 +470,7 @@ class SupplierReportsPage extends StatelessWidget {
             ),
           ),
         ),
-        bottomNavigationBar: const SupplierNavBar(currentIndex: 2),
+        bottomNavigationBar: const SupplierNavBar(currentIndex: 4),
       ),
     );
   }

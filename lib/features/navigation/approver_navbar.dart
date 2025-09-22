@@ -21,9 +21,6 @@ class ApproverNavBar extends StatelessWidget {
       case 3:
         Navigator.pushReplacementNamed(context, '/approver_reports');
         break;
-      // case 4:
-      //   Navigator.pushReplacementNamed(context, '/approver_profile');
-      //   break;
     }
   }
 
@@ -60,7 +57,6 @@ class ApproverNavBar extends StatelessWidget {
           _navItem(context, 1, Icons.check_circle, "Onaylar"),
           _navItem(context, 2, Icons.person_2, "Tedarikçiler"),
           _navItem(context, 3, Icons.bar_chart, "Raporlar"),
-          // _navItem(context, 4, Icons.person, "Profil"),
         ],
       ),
     );

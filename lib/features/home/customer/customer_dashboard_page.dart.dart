@@ -53,16 +53,27 @@ class CustomerDashboardPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  /// Başlık
-                  Center(
-                    child: Text(
-                      "Satınalma Anasayfa",
-                      style: AppStyles.heading1.copyWith(
-                        color: AppColors.textLight,
-                        fontSize: 26,
-                        fontWeight: FontWeight.bold,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Satınalma Ana Sayfa",
+                        style: AppStyles.heading1.copyWith(
+                          color: AppColors.textLight,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/customer_profile');
+                        },
+                        icon: Icon(
+                          Icons.settings,
+                          color: AppColors.textLight,
+                          size: 28,
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 30),
 

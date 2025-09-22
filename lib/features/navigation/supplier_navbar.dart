@@ -16,10 +16,13 @@ class SupplierNavBar extends StatelessWidget {
         Navigator.pushReplacementNamed(context, '/supplier_requests');
         break;
       case 2:
-        Navigator.pushReplacementNamed(context, '/supplier_reports');
+        Navigator.pushReplacementNamed(context, '/supplier_payments');
         break;
       case 3:
-        Navigator.pushReplacementNamed(context, '/supplier_profile');
+        Navigator.pushReplacementNamed(context, '/supplier_stock');
+        break;
+      case 4:
+        Navigator.pushReplacementNamed(context, '/supplier_reports');
         break;
     }
   }
@@ -55,8 +58,9 @@ class SupplierNavBar extends StatelessWidget {
         children: [
           _navItem(context, 0, Icons.home, "Ana Sayfa"),
           _navItem(context, 1, Icons.assignment, "Talepler"),
-          _navItem(context, 2, Icons.bar_chart, "Raporlar"),
-          _navItem(context, 3, Icons.person, "Profil"),
+          _navItem(context, 2, Icons.payment, "Ödemeler"),
+          _navItem(context, 3, Icons.shopping_bag, "Stok"),
+          _navItem(context, 4, Icons.bar_chart, "Raporlar"),
         ],
       ),
     );

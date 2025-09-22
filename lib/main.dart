@@ -12,6 +12,7 @@ import 'package:hesapkitap/features/home/approver/approver_profile_page.dart';
 import 'package:hesapkitap/features/home/approver/approver_reports_page.dart';
 import 'package:hesapkitap/features/home/approver/approver_request_page.dart';
 import 'package:hesapkitap/features/home/approver/approversupplier_page.dart';
+import 'package:hesapkitap/features/home/customer/customer_create_request_page.dart';
 import 'package:hesapkitap/features/home/customer/customer_dashboard_page.dart.dart';
 import 'package:hesapkitap/features/home/admin/admin_profile_page.dart';
 import 'package:hesapkitap/features/home/customer/customer_offers_page.dart';
@@ -22,9 +23,11 @@ import 'package:hesapkitap/features/home/customer_approver/customapprover_offers
 import 'package:hesapkitap/features/home/customer_approver/customapprover_profile_page.dart';
 import 'package:hesapkitap/features/home/customer_approver/customapprover_reports_page.dart';
 import 'package:hesapkitap/features/home/supplier/supplier_home_page.dart';
+import 'package:hesapkitap/features/home/supplier/supplier_payments_page.dart';
 import 'package:hesapkitap/features/home/supplier/supplier_profile_page.dart';
 import 'package:hesapkitap/features/home/supplier/supplier_reports_page.dart';
 import 'package:hesapkitap/features/home/supplier/supplier_request_page.dart';
+import 'package:hesapkitap/features/home/supplier/supplier_stock_page.dart';
 import 'package:hesapkitap/features/splash/splash_screen.dart';
 
 void main() async {
@@ -66,11 +69,15 @@ class MyApp extends StatelessWidget {
         '/supplier_requests': (context) => const SupplierRequestsPage(),
         '/supplier_reports': (context) => const SupplierReportsPage(),
         '/supplier_profile': (context) => const SupplierProfilePage(),
+        '/supplier_stock': (context) => const SupplierStockPage(),
+        '/supplier_payments': (context) => const SupplierPaymentsPage(),
         //Customer Routes
         '/customer_home': (context) => const CustomerDashboardPage(),
         '/customer_offers': (context) => CustomerOffersPage(),
         '/customer_reports': (context) => const CustomerReportsPage(),
         '/customer_profile': (context) => const CustomerProfilePage(),
+        '/customer_createrequest':
+            (context) => const CustomerCreateRequestPage(),
         //Customer Approver Routes
         '/customapprover_home': (context) => const CustomApproverHomePage(),
         '/customapprover_offers': (context) => CustomApproverOffersPage(),

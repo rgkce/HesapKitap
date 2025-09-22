@@ -68,12 +68,13 @@ class _CustomApproverReportsPageState extends State<CustomApproverReportsPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(width: 12),
-                  Text(
-                    "Raporlar",
-                    style: AppStyles.heading2.copyWith(
-                      color: AppColors.textLight,
-                      fontSize: 26,
-                      fontWeight: FontWeight.bold,
+                  Center(
+                    child: Text(
+                      "Raporlar",
+                      style: AppStyles.heading1.copyWith(
+                        color: AppColors.textLight,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),

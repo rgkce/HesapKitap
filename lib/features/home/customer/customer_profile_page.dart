@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hesapkitap/core/theme/app_colors.dart';
 import 'package:hesapkitap/core/theme/app_styles.dart';
-import 'package:hesapkitap/features/navigation/customer_navbar.dart';
 
 class CustomerProfilePage extends StatelessWidget {
   const CustomerProfilePage({super.key});
@@ -78,10 +77,7 @@ class CustomerProfilePage extends StatelessWidget {
               colors:
                   isDark
                       ? [AppColors.grey800, AppColors.primary.withOpacity(0.8)]
-                      : [
-                        AppColors.primary.withOpacity(0.8),
-                        AppColors.accent.withOpacity(0.8),
-                      ],
+                      : [AppColors.primary.withOpacity(0.8), AppColors.accent],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -90,6 +86,33 @@ class CustomerProfilePage extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(height: 20),
+                Row(
+                  children: [
+                    SizedBox(width: 20),
+                    IconButton(
+                      icon: Icon(
+                        Icons.arrow_back_ios,
+                        color: isDark ? AppColors.grey400 : AppColors.grey200,
+                        size: 30,
+                      ),
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(
+                          context,
+                          '/customer_home',
+                        );
+                      },
+                    ),
+                    SizedBox(width: 40),
+                    Text(
+                      "Satınalma Profil",
+                      style: AppStyles.heading1.copyWith(
+                        color: AppColors.textLight,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 20),
                 CircleAvatar(
                   radius: 60,
                   backgroundColor: AppColors.grey800,
@@ -185,7 +208,6 @@ class CustomerProfilePage extends StatelessWidget {
             ),
           ),
         ),
-        bottomNavigationBar: const CustomerNavBar(currentIndex: 3),
       ),
     );
   }

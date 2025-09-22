@@ -16,10 +16,10 @@ class CustomerNavBar extends StatelessWidget {
         Navigator.pushReplacementNamed(context, '/customer_offers');
         break;
       case 2:
-        Navigator.pushReplacementNamed(context, '/customer_reports');
+        Navigator.pushReplacementNamed(context, '/customer_createrequest');
         break;
       case 3:
-        Navigator.pushReplacementNamed(context, '/customer_profile');
+        Navigator.pushReplacementNamed(context, '/customer_reports');
         break;
     }
   }
@@ -55,8 +55,8 @@ class CustomerNavBar extends StatelessWidget {
         children: [
           _navItem(context, 0, Icons.home, "Ana Sayfa"),
           _navItem(context, 1, Icons.shopping_cart, "Teklifler"),
-          _navItem(context, 2, Icons.bar_chart, "Raporlar"),
-          _navItem(context, 3, Icons.person, "Profil"),
+          _navItem(context, 2, Icons.request_page, "Talepler"),
+          _navItem(context, 3, Icons.bar_chart, "Raporlar"),
         ],
       ),
     );

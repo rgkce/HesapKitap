@@ -45,15 +45,33 @@ class SupplierHomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Başlık
-                  Text(
-                    "Tedarikçi Ana Sayfa",
-                    style: AppStyles.heading1.copyWith(
-                      color: AppColors.textLight,
-                      fontSize: 26,
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Tedarikçi Ana Sayfa",
+                            style: AppStyles.heading1.copyWith(
+                              color: AppColors.textLight,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/supplier_profile');
+                            },
+                            icon: Icon(
+                              Icons.settings,
+                              color: AppColors.textLight,
+                              size: 28,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 25),
-
                   // Renkli istatistik kutuları
                   SizedBox(
                     height: 110,
