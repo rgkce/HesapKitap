@@ -105,9 +105,9 @@ class CustomApproverProfilePage extends StatelessWidget {
                         );
                       },
                     ),
-                    SizedBox(width: 40),
+                    SizedBox(width: 10),
                     Text(
-                      "Satınalma Profil",
+                      "Satınalma Yönetici Profil",
                       style: AppStyles.heading1.copyWith(
                         color: AppColors.textLight,
                         fontWeight: FontWeight.bold,

@@ -18,9 +18,9 @@ class AdminNavBar extends StatelessWidget {
       case 2:
         Navigator.pushReplacementNamed(context, '/admin_reports');
         break;
-      case 3:
-        Navigator.pushReplacementNamed(context, '/admin_profile');
-        break;
+      // case 3:
+      //   Navigator.pushReplacementNamed(context, '/admin_profile');
+      //   break;
     }
   }
 
@@ -56,7 +56,7 @@ class AdminNavBar extends StatelessWidget {
           _navItem(context, 0, Icons.home, "Ana Sayfa"),
           _navItem(context, 1, Icons.group, "Kullanıcılar"),
           _navItem(context, 2, Icons.bar_chart, "Raporlar"),
-          _navItem(context, 3, Icons.person, "Profil"),
+          // _navItem(context, 3, Icons.person, "Profil"),
         ],
       ),
     );

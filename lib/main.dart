@@ -22,6 +22,7 @@ import 'package:hesapkitap/features/home/customer_approver/customapprover_home_p
 import 'package:hesapkitap/features/home/customer_approver/customapprover_offers_page.dart';
 import 'package:hesapkitap/features/home/customer_approver/customapprover_profile_page.dart';
 import 'package:hesapkitap/features/home/customer_approver/customapprover_reports_page.dart';
+import 'package:hesapkitap/features/home/customer_approver/detail_page.dart';
 import 'package:hesapkitap/features/home/supplier/supplier_home_page.dart';
 import 'package:hesapkitap/features/home/supplier/supplier_payments_page.dart';
 import 'package:hesapkitap/features/home/supplier/supplier_profile_page.dart';
@@ -85,6 +86,7 @@ class MyApp extends StatelessWidget {
             (context) => const CustomApproverReportsPage(),
         '/customapprover_profile':
             (context) => const CustomApproverProfilePage(),
+        '/detail_page': (context) => const DetailPage(offer: {}),
       },
     );
   }

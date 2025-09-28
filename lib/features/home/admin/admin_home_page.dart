@@ -33,13 +33,27 @@ class AdminHomePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Center(
-                    child: Text(
-                      "Admin Ana Sayfa",
-                      style: AppStyles.heading1.copyWith(
-                        color: AppColors.textLight,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Admin Ana Sayfa",
+                        style: AppStyles.heading1.copyWith(
+                          color: AppColors.textLight,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/admin_profile');
+                        },
+                        icon: Icon(
+                          Icons.settings,
+                          color: AppColors.textLight,
+                          size: 28,
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 30),
 
