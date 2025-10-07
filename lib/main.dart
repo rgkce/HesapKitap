@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hesapkitap/core/theme/app_theme.dart';
+import 'package:hesapkitap/features/auth/change_password_page.dart';
 import 'package:hesapkitap/features/auth/forgot_password_page.dart';
 import 'package:hesapkitap/features/auth/login_page.dart';
 import 'package:hesapkitap/features/auth/role_selection_page.dart';
@@ -87,6 +88,7 @@ class MyApp extends StatelessWidget {
         '/customapprover_profile':
             (context) => const CustomApproverProfilePage(),
         '/detail_page': (context) => const DetailPage(offer: {}),
+        '/change_password': (context) => const ChangePasswordPage(),
       },
     );
   }
